@@ -1,6 +1,5 @@
 package com.m2i.WebStoreAPI.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.javafaker.Faker;
 
 import lombok.AllArgsConstructor;
@@ -33,8 +31,7 @@ public class Command {
 	private Date commandDate;
 	
 	@OneToMany(targetEntity = CommandLine.class, mappedBy="command", cascade=CascadeType.ALL, orphanRemoval=true)
-	@JsonIgnore
-	private List<CommandLine> commandLines = new ArrayList<>();
+	private List<CommandLine> commandLines;
 	
 	@OneToOne(mappedBy="command")
 	private Payment payment;

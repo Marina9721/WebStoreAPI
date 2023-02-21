@@ -15,7 +15,7 @@ import lombok.ToString;
 public class PaypalPayment extends Payment {
 	
 	@Column(name="account_number")
-	private String AccountNumber;
+	private String accountNumber;
 
 	public PaypalPayment() {
 		super();

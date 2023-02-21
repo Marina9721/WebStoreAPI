@@ -32,7 +32,7 @@ public abstract class Payment {
 	private double amount;
 	private Date paymentDate;
 	
-	@OneToOne @JoinColumn(name="id_command", nullable=false)
+	@OneToOne @JoinColumn(name="id_command")
 	private Command command;
 	
 
