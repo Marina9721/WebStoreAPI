@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity @Table
+@Entity @Table(name="command_lines")
 @Getter @Setter @AllArgsConstructor @ToString
 public class CommandLine {
 	

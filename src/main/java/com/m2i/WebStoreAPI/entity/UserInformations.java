@@ -35,15 +35,14 @@ public class UserInformations {
 	@JsonIgnore
 	private User user;
 	
-	public UserInformations() {
+	public UserInformations(User u) {
 		Faker f = new Faker();
 		
+		this.user = u;
+		
 		this.address = f.address().fullAddress();
-		
 		this.city = f.address().city();
-		
 		this.email = f.internet().safeEmailAddress();
-		
 		this.phoneNumber = f.phoneNumber().phoneNumber();
 			
 	}

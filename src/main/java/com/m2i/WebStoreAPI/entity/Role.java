@@ -16,7 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity @Table
+@Entity @Table(name="roles")
 @Getter @Setter @AllArgsConstructor @ToString
 public class Role {
 

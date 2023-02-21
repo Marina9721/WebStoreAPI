@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -43,7 +44,8 @@ public class User {
 			inverseJoinColumns = @JoinColumn(name="id_role"))
 	private List<Role> roles;
 	
-	
+	@OneToMany(targetEntity = Command.class, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Command> commands;
 	
 	public User() {
 		Faker f = new Faker();

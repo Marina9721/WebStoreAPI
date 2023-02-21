@@ -12,54 +12,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.m2i.WebStoreAPI.entity.Command;
-//import com.m2i.WebStoreAPI.entity.User;
-import com.m2i.WebStoreAPI.service.CommandService;
-//import com.m2i.WebStoreAPI.service.UserService;
+import com.m2i.WebStoreAPI.entity.CreditCardPayment;
+import com.m2i.WebStoreAPI.service.CreditCardPaymentService;
 
 @RestController
-@RequestMapping("/command")
-public class CommandController {
-
-	@Autowired 
-	CommandService cService;
+@RequestMapping("/creditcardpayment")
+public class CreditCardPaymentController {
 	
-	//@Autowired
-	//UserService uService;
-	
-	
-	@GetMapping("/fake")
-	public Command fakeCommand() {
-		//User u = new User();
-		//uService.create(u);
-		Command c = new Command();
-		cService.create(c);
-		return c;
-	}
-	
+	@Autowired
+	CreditCardPaymentService cService;
 	
 	@GetMapping("/{id}")
-	public Command getCommandById(@PathVariable int id) {
+	public CreditCardPayment getCreditCardPaymentById(@PathVariable("id") int id) {
 		return cService.getById(id);
 	}
 	
 	@GetMapping
-	public List<Command> getAllCommands(){
+	public List<CreditCardPayment> getAllCreditCardPayment(){
 		return cService.getAll();
 	}
 	
 	@PostMapping
-	public void postCommand(@RequestBody Command c) {
+	public void postPayment(@RequestBody CreditCardPayment c) {
 		cService.create(c);
 	}
 	
 	@PutMapping("/{id}")
-	public void putCommand(@PathVariable int id, @RequestBody Command c) {
+	public void putCreditCardPayment(@PathVariable("id") int id,@RequestBody CreditCardPayment c) {
 		cService.update(id, c);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteCommand(@PathVariable int id) {
+	public void deleteCreditCardPayment(@PathVariable("id") int id) {
 		cService.delete(id);
 	}
+
 }
