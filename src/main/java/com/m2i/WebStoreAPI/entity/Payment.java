@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,25 +20,17 @@ import lombok.ToString;
 
 @Entity @Table(name="payments")
 @Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
-@JsonDeserialize(as = PaypalPayment.class)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Payment {
 	
 	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
-	private double amount;
-	private Date paymentDate;
+	protected float amount;
+	protected Date paymentDate;
 	
 	@OneToOne @JoinColumn(name="id_command")
 	private Command command;
 	
-
-	public Payment(double amount, Date paymentDate, Command command) {
-		super();
-		this.amount = amount;
-		this.paymentDate = paymentDate;
-		this.command = command;
-	}
 
 }

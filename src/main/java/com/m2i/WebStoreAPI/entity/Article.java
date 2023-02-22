@@ -45,4 +45,14 @@ public class Article {
 		this.price = f.number().randomDouble(2, 10, 1000);
 	}
 
+
+	public Article(String description, String brand, double price) {
+		super();
+		this.description = description;
+		this.brand = brand;
+		this.price = price;
+	}
+	
+	
+
 }

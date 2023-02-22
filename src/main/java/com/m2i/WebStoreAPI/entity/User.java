@@ -1,5 +1,6 @@
 package com.m2i.WebStoreAPI.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.javafaker.Faker;
 
 import lombok.AllArgsConstructor;
@@ -34,10 +36,12 @@ public class User {
 	
 	private int connectionNumber;
 	
+	@JsonIgnore
 	@OneToOne(targetEntity= UserInformations.class, mappedBy="user" , cascade = CascadeType.ALL, 
 			orphanRemoval = true)
     private UserInformations userInformations;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "user_role_association",
 			joinColumns = @JoinColumn(name="id_user"),
@@ -55,6 +59,8 @@ public class User {
 		this.password = f.internet().password();
 		
 		this.connectionNumber = f.number().numberBetween(0, 1000000);
+		
+		this.roles = new ArrayList<>();
 		
 	}
 }

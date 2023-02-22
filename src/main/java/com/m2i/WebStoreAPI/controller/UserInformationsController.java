@@ -22,12 +22,11 @@ public class UserInformationsController {
 	@Autowired
 	UserInformationsService uiService;
 	
-	/*
+	
 	@GetMapping("/{id}")
-	public User getUserById(@PathVariable("id") int id) {
+	public UserInformations getUserById(@PathVariable("id") int id) {
 		return uiService.getById(id);
 	}
-	*/
 	
 	@GetMapping
 	public List<UserInformations> getAll(){

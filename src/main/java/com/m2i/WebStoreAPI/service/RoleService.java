@@ -12,33 +12,33 @@ import com.m2i.WebStoreAPI.repository.RoleRepository;
 public class RoleService {
 
 	@Autowired
-	RoleRepository repo2;
+	RoleRepository repo;
 	
 	public void create(Role r) {
-		repo2.save(r);
+		repo.save(r);
 	}
 
 	public Role getById(int id) {
-		return repo2.findById(id).orElse(null);
+		return repo.findById(id).orElse(null);
 	}
 
 	public List<Role> getAll() {
-		return repo2.findAll();
+		return repo.findAll();
 	}
 
 	public void update(int id, Role r) {
-		Role role = repo2.findById(id).orElse(null);
+		Role role = repo.findById(id).orElse(null);
 		if (r!= null) {
 			role.setRoleName( r.getRoleName() );
 			role.setUsers( r.getUsers());
-			repo2.save(role);
+			repo.save(role);
 		}
 	}
 
 	public void delete(int id) {
-		Role role = repo2.findById(id).orElse(null);
+		Role role = repo.findById(id).orElse(null);
 		if (role!= null) {
-			repo2.delete(role);
+			repo.delete(role);
 		}
 		
 	}

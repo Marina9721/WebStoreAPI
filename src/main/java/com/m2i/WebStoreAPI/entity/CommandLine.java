@@ -37,4 +37,12 @@ public class CommandLine {
 		this.quantity = f.number().randomDigit();
 	}
 
+	public CommandLine(int quantity, Article article, Command command) {
+		super();
+		this.quantity = quantity;
+		this.article = article;
+		this.command = command;
+	}
+	
+
 }

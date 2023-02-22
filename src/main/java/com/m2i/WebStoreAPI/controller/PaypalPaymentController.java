@@ -22,6 +22,13 @@ public class PaypalPaymentController {
 	@Autowired
 	PaypalPaymentService pService;
 	
+	@GetMapping("/fake")
+	public PaypalPayment fakePaypalPayment() {
+		PaypalPayment pp = new PaypalPayment();
+		pService.create(pp);
+		return pp;
+	}
+	
 	@GetMapping("/{id}")
 	public PaypalPayment getPaypalPaymentById(@PathVariable("id") int id) {
 		return pService.getById(id);

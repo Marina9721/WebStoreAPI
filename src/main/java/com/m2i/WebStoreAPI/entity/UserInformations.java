@@ -8,16 +8,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.javafaker.Faker;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity @Table
-@Getter @Setter @AllArgsConstructor @ToString
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
 public class UserInformations {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,6 @@ public class UserInformations {
 	private String phoneNumber;
 	
 	@OneToOne @JoinColumn(name="id_user")	
-	@JsonIgnore
 	private User user;
 	
 	public UserInformations(User u) {

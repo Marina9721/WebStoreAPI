@@ -12,36 +12,36 @@ import com.m2i.WebStoreAPI.repository.UserInformationsRepository;
 public class UserInformationsService {
 
 	@Autowired
-	UserInformationsRepository repo1;
+	UserInformationsRepository repo;
 	
-	public void create(UserInformations u) {
-		repo1.save(u);
+	public void create(UserInformations ui) {
+		repo.save(ui);
 	}
 
 	public UserInformations getById(int id) {
-		return repo1.findById(id).orElse(null);
+		return repo.findById(id).orElse(null);
 	}
 
 	public List<UserInformations> getAll() {
-		return repo1.findAll();
+		return repo.findAll();
 	}
 
-	public void update(int id, UserInformations u) {
-		UserInformations userInformations = repo1.findById(id).orElse(null);
-		if (u!= null) {
-			userInformations.setAddress( u.getAddress() );
-			userInformations.setCity( u.getCity());
-			userInformations.setEmail( u.getEmail());
-			userInformations.setPhoneNumber( u.getPhoneNumber() );
-			userInformations.setUser( u.getUser() );
-			repo1.save(userInformations);
+	public void update(int id, UserInformations ui) {
+		UserInformations userInformations = repo.findById(id).orElse(null);
+		if (ui!= null) {
+			userInformations.setAddress( ui.getAddress() );
+			userInformations.setCity( ui.getCity());
+			userInformations.setEmail( ui.getEmail());
+			userInformations.setPhoneNumber( ui.getPhoneNumber() );
+			userInformations.setUser( ui.getUser() );
+			repo.save(userInformations);
 		}
 	}
 
 	public void delete(int id) {
-		UserInformations userInformations = repo1.findById(id).orElse(null);
+		UserInformations userInformations = repo.findById(id).orElse(null);
 		if (userInformations!= null) {
-			repo1.delete(userInformations);
+			repo.delete(userInformations);
 		}
 		
 	}

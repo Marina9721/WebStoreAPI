@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.github.javafaker.Faker;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,9 +18,15 @@ public class PaypalPayment extends Payment {
 	
 	@Column(name="account_number")
 	private String accountNumber;
-
+	
+	
 	public PaypalPayment() {
-		super();
+		
+		Faker f = new Faker();
+		
+		this.amount = f.number().numberBetween(1, 300);
+		this.paymentDate = f.date().birthday();
+		this.accountNumber = Integer.toString(f.number().numberBetween(100000, 999999));
 	}		
 
 }

@@ -22,6 +22,13 @@ public class CreditCardPaymentController {
 	@Autowired
 	CreditCardPaymentService cService;
 	
+	@GetMapping("/fake")
+	public CreditCardPayment fakeCreditCardPayment() {
+		CreditCardPayment ccp = new CreditCardPayment();
+		cService.create(ccp);
+		return ccp;
+	}
+	
 	@GetMapping("/{id}")
 	public CreditCardPayment getCreditCardPaymentById(@PathVariable("id") int id) {
 		return cService.getById(id);
